@@ -1,0 +1,13 @@
+MongoClient.connect(url, {useUnifiedTopology: true} ,function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("Products");
+  var mydata = { cust_Id: "204"};
+  var newvalues = { $set: {Firstname: "Sukhpreet", address: "10 Howell Street" } };
+  dbo.collection("Customers_names").updateOne(mydata, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log("Document is updated!!");
+    db.close();
+  });
+});
+
+});  
