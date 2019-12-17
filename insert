@@ -1,0 +1,70 @@
+MongoClient.connect(url, {useUnifiedTopology: true}, function ( err, db){
+  if (err) throw err;
+  var dbo = db.db("Products");
+   var myobj = [
+    { Firstname: 'Jashan', address: '80 Arizonna drive' , cust_Id: '201'},
+    { Firstname: 'deep', address: '66 redfinch way' ,cust_Id: '202'},
+    { Firstname: 'jot', address: '8 conover court' ,cust_Id: '203'},
+    { Firstname: 'Sukh', address: '21 rubysilver drive' ,cust_Id: '204'},
+    { Firstname: 'Aman', address: '17 taurus road' ,cust_Id: '205'}
+  ];
+  dbo.collection("Customers_names").insertMany(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("Number of documents inserted in Customers_names: " + res.insertedCount);
+    db.close();
+});
+
+   });
+
+//inserting data 
+MongoClient.connect(url, {useUnifiedTopology: true}, function ( err, db){
+  if (err) throw err;
+  var dbj = db.db("Products");
+   var myobj1 = [
+    {  ProuctName:'Shoes', Quantity:'1000', cust_Id: '201' ,Dateofselling:'9/4/2019'},
+    {  ProuctName:'Socks', Quantity:'2000', cust_Id: '202',Dateofselling:'08/08/2018'},
+    {  ProuctName:'Mobilephones', Quantity:'1000', cust_Id: '203',Dateofselling:'9/03/2016'},
+    { ProuctName:'Books', Quantity:'300',cust_Id: '204',Dateofselling:'20/09/2018'},
+    { ProuctName:'Candies', Quantity:'1200', cust_Id: '205',Dateofselling:'18/10/2019'}
+  ];
+  dbj.collection("Products_info").insertMany(myobj1, function(err, res) {
+    if (err) throw err;
+    console.log("Number of documents inserted in Products_info: " + res.insertedCount);
+    db.close();
+});
+});
+//inserting data
+
+MongoClient.connect(url, {useUnifiedTopology: true}, function ( err, db){
+  if (err) throw err;
+  var dbi = db.db("Products");
+   var myobj2 = [
+    { OrderNumber:'C1', Price:'$100',ShippingNumber:'c101' },
+    {OrderNumber:'C2', Price:'$150',ShippingNumber:'c102'},
+    { OrderNumber:'C3', Price:'$125',ShippingNumber:'c103'},
+    {OrderNumber:'C4', Price:'$76',ShippingNumber:'c104'},
+    { OrderNumber:'C5', Price:'$276',ShippingNumber:'c105'}
+  ];
+  dbi.collection("Orders").insertMany(myobj2, function(err, res) {
+    if (err) throw err;
+    console.log("Number of documents inserted in Orders: " + res.insertedCount);
+    db.close();
+});
+});
+
+MongoClient.connect(url, {useUnifiedTopology: true}, function ( err, db){
+  if (err) throw err;
+  var dbi = db.db("Products");
+   var myobj3 = [
+    { Ordr_Id:'OR1', SellingProduct:'Socks', cust_Id:'201', Delivery_Date:'21/12/2019'},
+    {Ordr_Id:'OR2', SellingProduct:'Shoes', cust_Id:'202',  Delivery_Date:'27/12/2019'},
+    {Ordr_Id:'OR3', SellingProduct:'Mobilephones', cust_Id:'203', Delivery_Date:'11/02/2020'},
+    {Ordr_Id:'OR4', SellingProduct:'Laptops', cust_Id:'204', Delivery_Date:'04/04/2020'},
+    {Ordr_Id:'OR5', SellingProduct:'Candies', cust_Id:'205', Delivery_Date:'11/06/2020'}
+  ];
+  dbi.collection("Orders_Sales").insertMany(myobj3, function(err, res) {
+    if (err) throw err;
+    console.log("Number of documents inserted in Orders_Sales: " + res.insertedCount);
+    db.close();
+});
+});
